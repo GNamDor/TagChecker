@@ -1,3 +1,5 @@
+from HelperFunctions import get_sentences, remove_quotation
+
 '''
 Conditions Based on sample input
 
@@ -22,21 +24,23 @@ Expected </B> found #
 
 '''
 
-f = open("Paragraph.txt")
-paragraph = f.read()
+if __name__ == "__main__":
 
-sentences = paragraph.split(",")
 
-#stack 1 for <\w>
-stack_opening_tag = []
-#stack 2 for <\/\w>
+    sentences = get_sentences("Paragraph.txt")
 
-stack_closing_tag = []
+    #stack 1 for <\w>
+    stack_opening_tag = []
+    #stack 2 for <\/\w>
+    stack_closing_tag = []
+
+    for sentence in sentences:
+        words = sentence.split(" ")
+        pass
 
 '''
 PSEUDO CODE
 
-split paragraph with delimeter "," into sentences
 for each sentence in paragraph
     
     split sentence into words with delimeter " "
