@@ -53,10 +53,9 @@ def output_processing(smallest_stack_size, stack_op_tag, queue_cl_tag):
     when they are compared, if they don't match, exit the function. Else
     continue comparing until the smallest is exhausted.
 
-    if smallest data structure was the queue, output message for stack - found # ...
-    if smallest data structure was the stack, output message for queue - Expected # ...
-
-    
+    if stack is not empty, output message for stack - found # ...
+    if if queue is not empty, output message for queue - Expected # ...
+    if both are empty, output message - Correctly tagged paragraph
     '''
     for _ in range(smallest_stack_size):
         op = stack_op_tag.pop()
