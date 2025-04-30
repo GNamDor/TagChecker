@@ -26,6 +26,9 @@ Expected </B> found #
 PSEUDO CODE
 
 read from paragraph
+stack 1 for <\w>
+stack 2 for <\/\w>
+
 split paragraph with delimeter "," into sentences
 for each sentence in paragraph
     
@@ -33,18 +36,25 @@ for each sentence in paragraph
     for each word in sentence
         #used https://regex101.com/ for testing
         If word matches <\w> : eg <A>
-            add to stack
+            add to stack 1
         If word matches <\/\w> : eg </A>
-            if stack[-1] == remove_slash(word)
-                stack.pop
-            else
-                output expected A found B
-                skip sentence = Return?
+            add to stack 2
 
+    for length of smallest stack
+        A = stack1.pop
+        B = stack2.pop
 
-    if stack is empty
-        output Correctly tagged paragraph
-    if stack has <A> 
-        output expected </A> found #
+        if A != remove_slash(B)
+            output, Expected add_slash(A) found B 
+            break
+    if stack1 is not empty
+        output, expected add_slash(stack1.pop) found #
+
+    elif stack2 is not empty
+        output, expected # found stack2.pop
+    
+    else
+        output, Correctly tagged paragraph
+        
     
 '''
