@@ -17,11 +17,11 @@ def preprocess_sentence(text):
     return result
     
 def regex_sort(word, op_stack, cl_queue):
-    if re.match("<[A-Z]>", word):
+    if re.match(r"<[A-Z]>", word):
         op_stack.append(word)
-    elif re.match("<\/[A-Z]>", word):
+    elif re.match(r"<\/[A-Z]>", word):
         cl_queue.append(word)
-        
+
 def remove_slash(word):
     return word[0]+word[2:]    
 
