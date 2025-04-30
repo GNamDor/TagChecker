@@ -1,23 +1,27 @@
 from HelperFunctions import get_sentences, preprocess_sentence,regex_sort, remove_slash, add_slash, output_processing
 from collections import deque
 
+
+sentences = get_sentences("Paragraph.txt")
+
 if __name__ == "__main__":
 
-    sentences = get_sentences("Paragraph.txt")
- 
     for sentence in sentences:
-        #stack 1 for <\w>
+        # opening tags will be stored in stack and closing in queues
         stack_opening_tag = []
-        #stack 2 for <\/\w>
         queue_closing_tag = deque()
 
+        # if a sentence is empty, skip
         if len(sentence) <1:
             continue
-        #removing quotations to avoid bugs for regex match
+
+        # seperate tags from other strings
         sentence = preprocess_sentence(sentence)
         words = sentence.split(" ")
+
         for word in words:
             #used https://regex101.com/ for testing
+            #sort the words based on if its an opening or closing tag
             regex_sort(word, op_stack=stack_opening_tag, 
                              cl_queue=queue_closing_tag)
 
