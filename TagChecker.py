@@ -22,3 +22,29 @@ Expected </B> found #
 
 '''
 
+'''
+PSEUDO CODE
+
+read from paragraph
+split paragraph with delimeter "," into sentences
+for each sentence in paragraph
+    
+    split sentence into words with delimeter " "
+    for each word in sentence
+        #used https://regex101.com/ for testing
+        If word matches <\w> : eg <A>
+            add to stack
+        If word matches <\/\w> : eg </A>
+            if stack[-1] == remove_slash(word)
+                stack.pop
+            else
+                output expected A found B
+                skip sentence = Return?
+
+
+    if stack is empty
+        output Correctly tagged paragraph
+    if stack has <A> 
+        output expected </A> found #
+    
+'''
