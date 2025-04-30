@@ -8,7 +8,12 @@ def get_sentences(file_path):
     paragraph = f.read()
     return paragraph.split(",")
 
-def remove_quotation(text):
+def preprocess_sentence(text):
     #also removing new lines
-    return text[1:-1].replace('"','').replace("\n","")
+    removed_quotations = text[1:-1].replace('"','')
+    removed_newline = removed_quotations.replace("\n","\n")
+    #add padding for > and < 
+    insert_space = removed_newline.replace(">","> ")
+    result = insert_space.replace("<", " <")
+    return result
     

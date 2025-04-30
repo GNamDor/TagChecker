@@ -1,4 +1,4 @@
-from HelperFunctions import get_sentences, remove_quotation
+from HelperFunctions import get_sentences, preprocess_sentence
 
 '''
 Conditions Based on sample input
@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
     for sentence in sentences:
         #removing quotations to avoid bugs for regex match
-        sentence = remove_quotation(sentence)
+        sentence = preprocess_sentence(sentence)
         words = sentence.split(" ")
         print(words)
         pass
@@ -47,9 +47,11 @@ for each sentence in paragraph
     split sentence into words with delimeter " "
     for each word in sentence
         #used https://regex101.com/ for testing
-        If word matches <\w> : eg <A>
+        # regex correction \w will select any case word, using <[A-Z]>
+        If word matches <[A-Z]> : eg <A>
             add to stack 1
-        If word matches <\/\w> : eg </A>
+        # same as above, using <\/[A-Z]> instead
+        If word matches <\/[A-Z]> : eg </A>
             add to stack 2
 
     for length of smallest stack
