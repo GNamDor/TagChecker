@@ -21,4 +21,6 @@ def regex_sort(word, op_stack, cl_stack):
         op_stack.append(word)
     elif re.match("<\/[A-Z]>", word):
         cl_stack.append(word)
-    
+
+def remove_slash(word):
+    return word[0]+word[2:]    
