@@ -21,8 +21,7 @@ if __name__ == "__main__":
             #used https://regex101.com/ for testing
             regex_sort(word, op_stack=stack_opening_tag, 
                              cl_queue=queue_closing_tag)
-        print(stack_opening_tag)
-        print(queue_closing_tag)
+
         smallest_stack_size = min(len(stack_opening_tag), len(queue_closing_tag))
 
         result = output_processing(smallest_stack_size, stack_opening_tag, queue_closing_tag)
