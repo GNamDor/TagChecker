@@ -1,28 +1,5 @@
-from HelperFunctions import get_sentences, preprocess_sentence,regex_sort, remove_slash
+from HelperFunctions import get_sentences, preprocess_sentence,regex_sort, remove_slash, add_slash
 
-'''
-Conditions Based on sample input
-
-Ignore text similar to tags: <//g>
-    Regex? 
-    comparision of requirements: 1 "<", 1 optional "/", 1 Letter, 1 ">"
-
-Correctly tagged Paragraph
-    1. if tags are closed properly:
-
-Expected A found B
-    1. if A is closed by B
-        mismatched tags
-
-Expected # found </B>
-    1. if tags close properly before a </B>
-        tags close until </B>
-
-Expected </B> found #
-    1. if a <B> tag is left 
-        <B> is never closed
-
-'''
 
 if __name__ == "__main__":
 
@@ -30,6 +7,7 @@ if __name__ == "__main__":
  
 
     for sentence in sentences:
+        print(sentence)
         #stack 1 for <\w>
         stack_opening_tag = []
         #stack 2 for <\/\w>
@@ -51,25 +29,19 @@ if __name__ == "__main__":
         for i in range(smallest_stack_size):
             op = stack_opening_tag.pop()
             cl = stack_closing_tag.pop()
-
+            print(op," ",cl)
             if op != remove_slash(cl):
-                print(f"Expected ")
-
-
-    '''
-
-
-            if A != remove_slash(B)
-                output, Expected add_slash(A) found B 
+                print(1)
+                print(f"Expected {add_slash(op)} found {cl}")
                 break
-        if stack1 is not empty
-            output, expected add_slash(stack1.pop) found #
+        if len(stack_opening_tag) > 0:
+            print(2)
+            print(f"Expected {add_slash(stack_closing_tag.pop())} found #")
+        elif len(stack_closing_tag) > 0:
+            print(3)
+            print(f"Expected # found {stack_closing_tag.pop()}")
+        else:
+            print(4)
+            print("Correctly tagged paragraph")
 
-        elif stack2 is not empty
-            output, expected # found stack2.pop
-        
-        else
-            output, Correctly tagged paragraph
-            
-    '''
 

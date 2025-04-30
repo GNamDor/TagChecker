@@ -21,5 +21,8 @@ from HelperFunctions import *
 # print("stack1 ",stack1)
 # print("stack2 ",stack2)
 
-B = "</B>"
-print(remove_slash(B))
+# B = "</B>"
+# print(remove_slash(B)=="<B>")
+
+# A = "<A>"
+# print(add_slash(A)=="</A>")
