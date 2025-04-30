@@ -7,7 +7,7 @@ def get_sentences(file_path):
 
     f = open(file_path)
     paragraph = f.read()
-    return paragraph.split('",')
+    return paragraph.strip().split('",')
 
 def preprocess_sentence(text):
     
@@ -21,7 +21,7 @@ def regex_sort(word, op_stack, cl_queue):
         op_stack.append(word)
     elif re.match("<\/[A-Z]>", word):
         cl_queue.append(word)
-
+        
 def remove_slash(word):
     return word[0]+word[2:]    
 
