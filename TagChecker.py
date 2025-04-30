@@ -36,38 +36,36 @@ if __name__ == "__main__":
         #removing quotations to avoid bugs for regex match
         sentence = preprocess_sentence(sentence)
         words = sentence.split(" ")
-        print(words)
-        pass
-
-'''
-PSEUDO CODE
-
-for each sentence in paragraph
-    
-    split sentence into words with delimeter " "
-    for each word in sentence
-        #used https://regex101.com/ for testing
-        # regex correction \w will select any case word, using <[A-Z]>
-        If word matches <[A-Z]> : eg <A>
-            add to stack 1
-        # same as above, using <\/[A-Z]> instead
-        If word matches <\/[A-Z]> : eg </A>
-            add to stack 2
-
-    for length of smallest stack
-        A = stack1.pop
-        B = stack2.pop
-
-        if A != remove_slash(B)
-            output, Expected add_slash(A) found B 
-            break
-    if stack1 is not empty
-        output, expected add_slash(stack1.pop) found #
-
-    elif stack2 is not empty
-        output, expected # found stack2.pop
-    
-    else
-        output, Correctly tagged paragraph
         
-'''
+        for word in sentence:
+
+            pass
+
+    '''
+        
+        for each word in sentence
+            #used https://regex101.com/ for testing
+            # regex correction \w will select any case word, using <[A-Z]>
+            If word matches <[A-Z]> : eg <A>
+                add to stack 1
+            # same as above, using <\/[A-Z]> instead
+            If word matches <\/[A-Z]> : eg </A>
+                add to stack 2
+
+        for length of smallest stack
+            A = stack1.pop
+            B = stack2.pop
+
+            if A != remove_slash(B)
+                output, Expected add_slash(A) found B 
+                break
+        if stack1 is not empty
+            output, expected add_slash(stack1.pop) found #
+
+        elif stack2 is not empty
+            output, expected # found stack2.pop
+        
+        else
+            output, Correctly tagged paragraph
+            
+    '''
