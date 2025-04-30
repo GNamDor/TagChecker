@@ -27,12 +27,14 @@ Expected </B> found #
 if __name__ == "__main__":
 
     sentences = get_sentences("Paragraph.txt")
-    #stack 1 for <\w>
-    stack_opening_tag = []
-    #stack 2 for <\/\w>
-    stack_closing_tag = []
+ 
 
     for sentence in sentences:
+        #stack 1 for <\w>
+        stack_opening_tag = []
+        #stack 2 for <\/\w>
+        stack_closing_tag = []
+
         if len(sentence) <1:
             continue
         #removing quotations to avoid bugs for regex match
@@ -44,20 +46,17 @@ if __name__ == "__main__":
             regex_sort(word, op_stack=stack_opening_tag, 
                              cl_stack=stack_closing_tag)
 
-        smallest_stack = min(len(stack_opening_tag), len(stack_closing_tag))
+        smallest_stack_size = min(len(stack_opening_tag), len(stack_closing_tag))
 
-        print(sentence)
-        print(len(sentence))
+        for i in range(smallest_stack_size):
+            A = stack_opening_tag.pop()
+            B = stack_closing_tag.pop()
 
 
 
-        stack_opening_tag = []
-        stack_closing_tag = []
 
     '''
-        for length of smallest stack
-            A = stack1.pop
-            B = stack2.pop
+
 
             if A != remove_slash(B)
                 output, Expected add_slash(A) found B 
