@@ -26,16 +26,17 @@ Expected </B> found #
 
 if __name__ == "__main__":
 
-
     sentences = get_sentences("Paragraph.txt")
-
     #stack 1 for <\w>
     stack_opening_tag = []
     #stack 2 for <\/\w>
     stack_closing_tag = []
 
     for sentence in sentences:
+        #removing quotations to avoid bugs for regex match
+        sentence = remove_quotation(sentence)
         words = sentence.split(" ")
+        print(words)
         pass
 
 '''

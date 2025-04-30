@@ -9,3 +9,4 @@ sentences = get_sentences("Paragraph.txt")
 
 # print(sentences)
 # print(remove_quotation(sentences[0]))
+
