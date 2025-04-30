@@ -28,9 +28,9 @@ if __name__ == "__main__":
 
     sentences = get_sentences("Paragraph.txt")
     #stack 1 for <\w>
-    stack_opening_tag = ["opening"]
+    stack_opening_tag = []
     #stack 2 for <\/\w>
-    stack_closing_tag = ["closing"]
+    stack_closing_tag = []
 
     for sentence in sentences:
         #removing quotations to avoid bugs for regex match
@@ -42,10 +42,19 @@ if __name__ == "__main__":
             regex_sort(word, op_stack=stack_opening_tag, 
                              cl_stack=stack_closing_tag)
 
+        smallest_stack = min(len(stack_opening_tag), len(stack_closing_tag))
+
+        print(sentence)
+        print(smallest_stack)
+        print(stack_opening_tag)
+        print(stack_closing_tag)
+
+
+
+        stack_opening_tag = []
+        stack_closing_tag = []
 
     '''
-  
-
         for length of smallest stack
             A = stack1.pop
             B = stack2.pop
@@ -63,3 +72,4 @@ if __name__ == "__main__":
             output, Correctly tagged paragraph
             
     '''
+
