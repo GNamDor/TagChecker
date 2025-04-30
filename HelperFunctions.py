@@ -9,6 +9,6 @@ def get_sentences(file_path):
     return paragraph.split(",")
 
 def remove_quotation(text):
-    if text[0] == '"' and text[-1] == '"':
-        return text[1:-1]
+    #also removing new lines
+    return text[1:-1].replace('"','').replace("\n","")
     
