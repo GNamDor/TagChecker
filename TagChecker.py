@@ -22,12 +22,19 @@ Expected </B> found #
 
 '''
 
+f = open("Paragraph.txt")
+paragraph = f.read()
+
+sentences = paragraph.split(",")
+
+#stack 1 for <\w>
+stack_opening_tag = []
+#stack 2 for <\/\w>
+
+stack_closing_tag = []
+
 '''
 PSEUDO CODE
-
-read from paragraph
-stack 1 for <\w>
-stack 2 for <\/\w>
 
 split paragraph with delimeter "," into sentences
 for each sentence in paragraph
@@ -56,5 +63,4 @@ for each sentence in paragraph
     else
         output, Correctly tagged paragraph
         
-    
 '''
