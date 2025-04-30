@@ -7,7 +7,6 @@ if __name__ == "__main__":
  
 
     for sentence in sentences:
-        print(sentence)
         #stack 1 for <\w>
         stack_opening_tag = []
         #stack 2 for <\/\w>
@@ -18,12 +17,12 @@ if __name__ == "__main__":
         #removing quotations to avoid bugs for regex match
         sentence = preprocess_sentence(sentence)
         words = sentence.split(" ")
-
         for word in words:
             #used https://regex101.com/ for testing
             regex_sort(word, op_stack=stack_opening_tag, 
                              cl_queue=queue_closing_tag)
-
+        print(stack_opening_tag)
+        print(queue_closing_tag)
         smallest_stack_size = min(len(stack_opening_tag), len(queue_closing_tag))
 
         result = output_processing(smallest_stack_size, stack_opening_tag, queue_closing_tag)

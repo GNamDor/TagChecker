@@ -38,7 +38,7 @@ def output_processing(smallest_stack_size, stack_op_tag, queue_cl_tag):
             return f"Expected {add_slash(op)} found {cl}"
             
     if len(stack_op_tag) > 0:
-        return f"Expected {add_slash(queue_cl_tag.pop())} found #"
+        return f"Expected {add_slash(stack_op_tag.pop())} found #"
     elif len(queue_cl_tag) > 0:
         return f"Expected # found {queue_cl_tag.pop()}"
     else:
