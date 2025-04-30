@@ -5,7 +5,6 @@ if __name__ == "__main__":
 
     sentences = get_sentences("Paragraph.txt")
  
-
     for sentence in sentences:
         #stack 1 for <\w>
         stack_opening_tag = []
