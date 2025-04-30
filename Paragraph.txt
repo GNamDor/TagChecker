@@ -5,5 +5,3 @@ nested</B></C>",
 "<B>This should be in boldface, but there is an extra closing tag</B></C>",
 "<B><C>This should be centered and in boldface, but there is a missing closing
 tag</C>",
-
-

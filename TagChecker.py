@@ -33,6 +33,8 @@ if __name__ == "__main__":
     stack_closing_tag = []
 
     for sentence in sentences:
+        if len(sentence) <1:
+            continue
         #removing quotations to avoid bugs for regex match
         sentence = preprocess_sentence(sentence)
         words = sentence.split(" ")
@@ -45,9 +47,7 @@ if __name__ == "__main__":
         smallest_stack = min(len(stack_opening_tag), len(stack_closing_tag))
 
         print(sentence)
-        print(smallest_stack)
-        print(stack_opening_tag)
-        print(stack_closing_tag)
+        print(len(sentence))
 
 
 
