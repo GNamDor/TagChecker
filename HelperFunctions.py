@@ -24,3 +24,6 @@ def regex_sort(word, op_stack, cl_stack):
 
 def remove_slash(word):
     return word[0]+word[2:]    
+
+def add_slash(word):
+    return word[0] + "/" + word[1:]   

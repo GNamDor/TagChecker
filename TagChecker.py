@@ -1,4 +1,4 @@
-from HelperFunctions import get_sentences, preprocess_sentence,regex_sort
+from HelperFunctions import get_sentences, preprocess_sentence,regex_sort, remove_slash
 
 '''
 Conditions Based on sample input
@@ -49,10 +49,11 @@ if __name__ == "__main__":
         smallest_stack_size = min(len(stack_opening_tag), len(stack_closing_tag))
 
         for i in range(smallest_stack_size):
-            A = stack_opening_tag.pop()
-            B = stack_closing_tag.pop()
+            op = stack_opening_tag.pop()
+            cl = stack_closing_tag.pop()
 
-
+            if op != remove_slash(cl):
+                print(f"Expected ")
 
 
     '''
