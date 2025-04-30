@@ -16,9 +16,12 @@ def preprocess_sentence(text):
     result = insert_space.replace("<", " <")
     return result
     
-def regex_sort(word, stack_op_tag, stack_cl_tag):
+def regex_sort(word, op_stack, cl_stack):
+    print(word)
     if re.match("<[A-Z]>", word):
-        stack_op_tag.append(word)
+        op_stack.append(word)
+        # print(op_stack)
     elif re.match("<\/[A-Z]>", word):
-        stack_cl_tag.append(word)
+        cl_stack.append(word)
+        # print(cl_stack)
     
