@@ -62,14 +62,14 @@ def output_processing(smallest_stack_size, stack_op_tag, queue_cl_tag):
         cl = queue_cl_tag.popleft()
         
         if op != remove_slash(cl):
-            return f"Expected {add_slash(op)} found {cl}"
+            return f'"Expected {add_slash(op)} found {cl}",'
     
     # if smallest was queue
     if len(stack_op_tag) > 0:
-        return f"Expected {add_slash(stack_op_tag.pop())} found #"
+        return f'"Expected {add_slash(stack_op_tag.pop())} found #",'
     # if smallest with stack
     elif len(queue_cl_tag) > 0:
-        return f"Expected # found {queue_cl_tag.pop()}"
+        return f'"Expected # found {queue_cl_tag.pop()}",'
     # if they are of equal size and items were same throughout
     else:
-        return "Correctly tagged paragraph"
+        return '"Correctly tagged paragraph",'
