@@ -5,6 +5,7 @@ You do not need any external libraries as I have used builtin libraries like re 
 
 After which, please modify or replace Paragraph.txt with your Sample and run TagChecker.py. You can do so by
 1. running through the CLI - <b>Recommended</b>
+
 windows
 ```python
 py TagChecker.py 
