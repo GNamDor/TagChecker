@@ -4,6 +4,19 @@ HelperFunctions.py will be exposing its functions for TagChecker.py
 '''
 
 from HelperFunctions import *
+import unittest
+
+class TestMathUtils(unittest.TestCase):
+
+
+    def test_remove_slash(self):
+        self.assertEqual(remove_slash("</A>"), "<A>")
+        self.assertEqual(remove_slash("</B>"), "<B>")
+
+
+
+if __name__ == '__main__':
+    unittest.main()
 
 # sentences = get_sentences("Paragraph.txt")
 
@@ -26,3 +39,4 @@ from HelperFunctions import *
 
 # A = "<A>"
 # print(add_slash(A)=="</A>")
+
