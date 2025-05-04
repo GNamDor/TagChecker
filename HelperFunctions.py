@@ -20,15 +20,6 @@ def preprocess_sentence(text):
     result = insert_space.replace("<", " <")
     return result
     
-def regex_sort(word, op_stack, cl_queue):
-    '''
-    use regex to compare if a Tag has <, /, A-Z and >, if so, store them either in
-    stack or queue
-    '''
-    if re.match(r"<[A-Z]>", word):
-        op_stack.append(word)
-    elif re.match(r"<\/[A-Z]>", word):
-        cl_queue.append(word)
 
 def remove_slash(word):
     '''
@@ -44,32 +35,25 @@ def add_slash(word):
     '''
     return word[0] + "/" + word[1:]   
 
-def output_processing(smallest_stack_size, stack_op_tag, queue_cl_tag):
+def regex_sort(words, op_stack, cl_queue):
     '''
-    loops over the smallest data structure and compares the last of a stack with
-    the first of the queue.
-    stack is used for the opening tags and queue for the closing tags
-
-    when they are compared, if they don't match, exit the function. Else
-    continue comparing until the smallest is exhausted.
-
-    if stack is not empty, output message for stack - found # ...
-    if if queue is not empty, output message for queue - Expected # ...
-    if both are empty, output message - Correctly tagged paragraph
+    use regex to compare if a Tag has <, /, A-Z and >, if so, store them either in
+    stack or queue
     '''
-    for _ in range(smallest_stack_size):
-        op = stack_op_tag.pop()
-        cl = queue_cl_tag.popleft()
-        
-        if op != remove_slash(cl):
-            return f'"Expected {add_slash(op)} found {cl}",'
-    
-    # if smallest was queue
-    if len(stack_op_tag) > 0:
-        return f'"Expected {add_slash(stack_op_tag.pop())} found #",'
-    # if smallest with stack
-    elif len(queue_cl_tag) > 0:
-        return f'"Expected # found {queue_cl_tag.pop()}",'
-    # if they are of equal size and items were same throughout
-    else:
-        return '"Correctly tagged paragraph",'
+
+    for word in words:
+        if re.match(r"<[A-Z]>", word):
+            op_stack.append(word)
+        elif re.match(r"<\/[A-Z]>", word):
+            # try to access last item
+            if len(op_stack)<1:
+                return f'"Expected # found {word}",'
+            # if tags match pop them
+            if op_stack[-1] == remove_slash(word):
+                op_stack.pop()
+            else:
+                return f'"Expected {add_slash(op_stack.pop())} found {word}",'
+
+    if len(op_stack)>0:
+        return f'"Expected {add_slash(op_stack.pop())} found #",'
+    return 'Correctly tagged paragraph",'
