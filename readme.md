@@ -16,6 +16,8 @@ python3 TagChecker.py
 ```
 
 2. running on your favourite IDE
+
+in IDE terminal
 ```python 
 py TagChecker.py
 ```
