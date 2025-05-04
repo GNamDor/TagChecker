@@ -1,3 +1,13 @@
+"The following text <C><B>is centered and in boldface</B></C>",
+"<B>This <\\g>is <B>boldface</B> in <<*> a</B> <\\6> <<d> sentence",
+"<B><C>This should be centered and in boldface, but the tags are wrongly
+nested</B></C>",
+"<B>This should be in boldface, but there is an extra closing tag</B></C>",
+"<B><C>This should be centered and in boldface, but there is a missing closing
+tag</C>",
+"<C>This <B>should be bold and centered</C></B>, but the tags are mismatched.",
+"<B>This is bold, but <I>italic is not closed properly</B>",
+"<C><B><I>This is centered, bold, and italic</I></B></C> — properly nested.",
 "<B><C>This <I>sentence has multiple</C> format tags</I></B> — incorrect nesting.",
 "<C>This is centered only, but <B>bold tag is never closed.",
 "Normal text with a stray tag <B><<*> and malformed symbols>",
