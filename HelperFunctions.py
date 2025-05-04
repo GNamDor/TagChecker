@@ -35,7 +35,7 @@ def add_slash(word):
     '''
     return word[0] + "/" + word[1:]   
 
-def regex_sort(words, op_stack, cl_queue):
+def regex_sort(words, op_stack):
     '''
     use regex to compare if a Tag has <, /, A-Z and >, if so, store them either in
     stack or queue
