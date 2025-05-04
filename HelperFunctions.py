@@ -40,20 +40,26 @@ def regex_sort(words, op_stack):
     use regex to compare if a Tag has <, /, A-Z and >, if so, store them either in
     stack or queue
     '''
-
+    # for each word in a sentence
     for word in words:
+        # opening tag match, then append
         if re.match(r"<[A-Z]>", word):
             op_stack.append(word)
+        # closing tag match then decision process
         elif re.match(r"<\/[A-Z]>", word):
             # try to access last item
             if len(op_stack)<1:
+                # if empty, then sentence is not correct, output statement
                 return f'"Expected # found {word}",'
-            # if tags match pop them
+            # if tags match pop them and continue
             if op_stack[-1] == remove_slash(word):
                 op_stack.pop()
+            # if tags don't match then sentence is not correct, output statement
             else:
                 return f'"Expected {add_slash(op_stack.pop())} found {word}",'
-
+    # if stack was not completely popped, then unused closing tags are present
     if len(op_stack)>0:
         return f'"Expected {add_slash(op_stack.pop())} found #",'
+    
+    # if all conditions pass, then sentence is correctly tagged
     return 'Correctly tagged paragraph",'
