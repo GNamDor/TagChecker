@@ -21,7 +21,7 @@ class TestMathUtils(unittest.TestCase):
         words = ['<A>', 'Hello', '</A>']
         op_stack = []
         result = regex_sort(words, op_stack)
-        self.assertEqual(result, 'Correctly tagged paragraph",')
+        self.assertEqual(result, '"Correctly tagged paragraph",')
 
     def test_regex_sort_mismatched_tags(self):
         words = ['<A>', 'Hello', '</B>']
@@ -52,6 +52,7 @@ class TestMathUtils(unittest.TestCase):
         op_stack = []
         result = regex_sort(words, op_stack)
         self.assertEqual(result, '"Expected # found </A>",')
+
 
 if __name__ == '__main__':
     unittest.main()

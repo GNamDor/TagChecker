@@ -60,6 +60,6 @@ def regex_sort(words, op_stack):
     # if stack was not completely popped, then unused closing tags are present
     if len(op_stack)>0:
         return f'"Expected {add_slash(op_stack.pop())} found #",'
-    
-    # if all conditions pass, then sentence is correctly tagged
-    return '"Correctly tagged paragraph",'
+    else:
+        # if all conditions pass, then sentence is correctly tagged
+        return '"Correctly tagged paragraph",'
