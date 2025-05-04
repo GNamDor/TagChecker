@@ -41,6 +41,17 @@ class TestMathUtils(unittest.TestCase):
         result = regex_sort(words, op_stack)
         self.assertEqual(result, '"Expected # found </A>",')
 
+    def test_regex_sort_double_open_tag(self):
+        words = [ '<A>','Hello', '<A>']
+        op_stack = []
+        result = regex_sort(words, op_stack)
+        self.assertEqual(result, '"Expected </A> found #",')
+
+    def test_regex_sort_double_close_tag(self):
+        words = [ '</A>','Hello', '</A>']
+        op_stack = []
+        result = regex_sort(words, op_stack)
+        self.assertEqual(result, '"Expected # found </A>",')
 
 if __name__ == '__main__':
     unittest.main()
