@@ -11,3 +11,5 @@ Please feel free to go through the <b>commmit history</b> to explore my thought 
 this given task. 
 
 I have also included Test.py that was seperated from TagChecker.py for easy testing, and made it modular with HelperFunctions.py
+
+![Methodology of tag checker](methodology.png)
